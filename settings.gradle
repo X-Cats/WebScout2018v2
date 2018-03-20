@@ -1,0 +1,4 @@
+rootProject.name = "Webscout2018"
+
+include("XcatsScoutingLib")
+include("webscout2018")
