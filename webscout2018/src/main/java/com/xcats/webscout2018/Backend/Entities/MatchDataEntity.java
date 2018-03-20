@@ -2,6 +2,8 @@ package com.xcats.webscout2018.Backend.Entities;
 
 import com.xcats.XcatsScoutingLib.General.Enums.Alliance;
 import com.xcats.XcatsScoutingLib.General.Enums.DriverPosition;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.MatchData;
+import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupElementPos;
 import com.xcats.webscout2018.Backend.Entities.id.MatchDataID;
 
 import javax.persistence.Entity;
@@ -11,7 +13,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="match_data",schema = "event")
-public class MatchDataEntity implements Serializable {
+public class MatchDataEntity implements Serializable, MatchData {
 
 	@Id
 	private MatchDataID id;
