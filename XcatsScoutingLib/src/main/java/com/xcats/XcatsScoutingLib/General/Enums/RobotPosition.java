@@ -1,12 +1,12 @@
 package com.xcats.XcatsScoutingLib.General.Enums;
 
-public enum DriverPosition {
+public enum RobotPosition {
 	CENTER,LEFT,RIGHT;
 
-	public static DriverPosition parseFromString(String in) {
-		if(in.equalsIgnoreCase(Values.LEFT)) return DriverPosition.LEFT;
-		else if(in.equalsIgnoreCase(Values.CENTER)) return DriverPosition.CENTER;
-		else return DriverPosition.RIGHT;
+	public static RobotPosition parseFromString(String in) {
+		if(in.equalsIgnoreCase(Values.LEFT)) return RobotPosition.LEFT;
+		else if(in.equalsIgnoreCase(Values.CENTER)) return RobotPosition.CENTER;
+		else return RobotPosition.RIGHT;
 	}
 
 	public String toString() {
