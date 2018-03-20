@@ -1,12 +1,12 @@
-package com.xcats.webscoutredux;
+package com.xcats.webscout2018;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebscoutreduxApplication {
+public class Webscout2018Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebscoutreduxApplication.class, args);
+		SpringApplication.run(Webscout2018Application.class, args);
 	}
 }

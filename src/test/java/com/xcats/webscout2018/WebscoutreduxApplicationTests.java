@@ -1,4 +1,4 @@
-package com.xcats.webscoutredux;
+package com.xcats.webscout2018;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

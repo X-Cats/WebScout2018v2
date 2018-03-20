@@ -1,7 +1,7 @@
 spring:
   #Database Settings
   datasource:
-    url: jdbc:h2:/var/db/flr;DB_CLOSE_ON_EXIT=TRUE;INIT= CREATE SCHEMA IF NOT EXISTS event
+    url: jdbc:h2:/var/db/test;DB_CLOSE_ON_EXIT=TRUE;INIT= CREATE SCHEMA IF NOT EXISTS event
     platform: h2
     username: sa
     password:
@@ -28,3 +28,7 @@ spring:
     user:
       name:  xcats
       password: Xcatsteam191
+
+  server:
+    port: 9000
+
