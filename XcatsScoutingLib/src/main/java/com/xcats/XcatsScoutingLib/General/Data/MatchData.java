@@ -6,7 +6,7 @@ import com.xcats.XcatsScoutingLib.General.Enums.RobotPosition;
 
 import java.util.Comparator;
 
-public interface MatchData extends Comparator<MatchData> {
+public interface MatchData {
 	public Team getTeam();
 	public int getMatchNum();
 	public Alliance getAlliance();
