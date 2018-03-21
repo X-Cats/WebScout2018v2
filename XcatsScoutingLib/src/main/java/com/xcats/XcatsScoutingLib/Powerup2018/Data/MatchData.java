@@ -18,9 +18,6 @@ public interface MatchData extends com.xcats.XcatsScoutingLib.General.Data.Match
 	public int getAutoCubesScale();
 	public int getAutoCubesScaleFail();
 
-	public int getAutoCubesOppSwitch();
-	public int getAutoCubesOppSwitchFail();
-
 	//Teleop Info
 
 	public int getCubesSwitch();
@@ -36,6 +33,6 @@ public interface MatchData extends com.xcats.XcatsScoutingLib.General.Data.Match
 
 	//Endgame Info
 	public boolean getClimb();
-	public int climbsAssisted();
+	public int getClimbsAssisted();
 
 }

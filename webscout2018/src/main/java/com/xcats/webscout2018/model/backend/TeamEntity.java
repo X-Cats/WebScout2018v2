@@ -1,4 +1,4 @@
-package com.xcats.webscout2018.Backend.Entities;
+package com.xcats.webscout2018.model.backend;
 
 import com.xcats.XcatsScoutingLib.General.Data.Team;
 

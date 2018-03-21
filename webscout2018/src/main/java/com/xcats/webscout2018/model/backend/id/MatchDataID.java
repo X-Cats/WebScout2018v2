@@ -1,6 +1,6 @@
-package com.xcats.webscout2018.Backend.Entities.id;
+package com.xcats.webscout2018.model.backend.id;
 
-import com.xcats.webscout2018.Backend.Entities.TeamEntity;
+import com.xcats.webscout2018.model.backend.TeamEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
