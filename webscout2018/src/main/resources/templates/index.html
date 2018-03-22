@@ -9,10 +9,9 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header "></div>
-<p th:text="${message}"></p>
 <div class="container"><br/>
     <div class="alert alert-success">
-        <strong>Success!</strong> it is working yaay
+        <strong>Success!</strong> <p th:text="${message}"></p>
     </div>
 </div>
 </body>
