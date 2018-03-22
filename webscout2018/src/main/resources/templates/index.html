@@ -2,11 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org"/>
 <head>
     <meta charset="ISO-8859-1"/>
-
     <title>XScout</title>
+    <script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<h1>Spring MVC + Thymeleaf  Hello World example</h1>
+<div th:replace="fragments/header :: header "></div>
 <p th:text="${message}"></p>
+<div class="container"><br/>
+    <div class="alert alert-success">
+        <strong>Success!</strong> it is working yaay
+    </div>
+</div>
 </body>
 </html>
