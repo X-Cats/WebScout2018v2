@@ -29,6 +29,4 @@ spring:
       name:  xcats
       password: Xcatsteam191
 
-  server:
-    port: 9000
 
