@@ -8,14 +8,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
-}
 
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'com.xcats.webscout2018.Webscout2018Application'
-        )
-    }
 }
 
 apply plugin: 'java'
@@ -42,12 +35,6 @@ dependencies {
         exclude module: 'org.springframework.boot:spring-boot-starter-tomcat'
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
-
-    //Webjars
-    // https://mvnrepository.com/artifact/org.webjars/bootstrap
-    compile 'org.webjars:bootstrap:3.3.7'
-    // https://mvnrepository.com/artifact/org.webjars/jquery
-    compile 'org.webjars:jquery:2.1.3'
 
     compile project(":XcatsScoutingLib")
 
