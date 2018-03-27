@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="teams", schema = "test")
+@Table(name="teams", schema = "event")
 public class TeamEntity implements Team{
 
 	@Id

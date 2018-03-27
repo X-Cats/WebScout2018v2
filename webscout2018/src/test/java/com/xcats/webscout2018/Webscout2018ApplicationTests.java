@@ -11,6 +11,7 @@ public class Webscout2018ApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }

@@ -3,11 +3,11 @@
 <head>
     <meta charset="ISO-8859-1"/>
     <title>XScout</title>
-    <script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/headerstyle.css"/>
+    <script src="../static/bootstrap-3.3.7js/bootstrap.min.js" th:src="@{bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="../static/bootstrap-3.3.7/css/bootstrap.min.css" th:href="@{/bootstrap-3.3.7/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="css/headerstyle.css"/>
     <script src="/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/plotly/plotly-latest.min.js"></script>
+    <script src="../static/plotly/plotly-latest.min.js" th:src="@{/plotly/plotly-latest.min.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header "></div>
@@ -15,13 +15,84 @@
 <div class="container">
     <div class="col-lg-6 col-sm-12">
         <h3>Team Data: </h3>
-        lorem ipsum dolor lorem ipsum dolor
-        lorem ipsum dolor lorem ipsum dolor
-        lorem ipsum dolor lorem ipsum dolor
-        lorem ipsum dolor lorem ipsum dolor
-        lorem ipsum dolor lorem ipsum dolor
-        lorem ipsum dolor lorem ipsum dolor
-        lorem ipsum dolor lorem ipsum dolor
+        <div>
+            <h4>Cube Placement: </h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Element</th>
+                    <th scope="col">Can Do?</th>
+                    <th scope="col">Percent Focus</th>
+                    <th scope="col">Total Focus</th>
+                    <th scope="col">Average</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>Switch</td>
+                    <td>Yes</td>
+                    <td>30%</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Scale</td>
+                    <td>Yes</td>
+                    <td>30%</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Opposite Switch</td>
+                    <td>Yes</td>
+                    <td>30%</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <h4>Autonomous</h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Can Do</th>
+                    <th scope="col">Percent Focus</th>
+                    <th scope="col">Total Focus</th>
+                    <th scope="col">Success Percentage</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>Baseline</td>
+                    <td>Yes</td>
+                    <td>100%</td>
+                    <td>10</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>Switch</td>
+                    <td>Yes</td>
+                    <td>100%</td>
+                    <td>10</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>Scale</td>
+                    <td>Yes</td>
+                    <td>100%</td>
+                    <td>10</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>Crosscourt</td>
+                    <td>Yes</td>
+                    <td>100%</td>
+                    <td>10</td>
+                    <td>100%</td>
+                </tr>
+            </table>
+        </div>
 
     </div>
     <div class="col-lg-6 col-sm-12">
