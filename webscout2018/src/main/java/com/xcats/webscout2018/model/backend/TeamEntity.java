@@ -22,6 +22,11 @@ public class TeamEntity implements Team{
 		this.teamNum = teamNum;
 		this.teamName = teamName;
 	}
+
+	public TeamEntity() {
+
+	}
+
 	@Override
 	public int getTeamNum() {
 		return this.teamNum;

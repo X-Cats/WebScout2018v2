@@ -13,6 +13,15 @@
 <div th:replace="fragments/header :: header "></div>
 
 <div class="container">
+    <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle-split" type="button" id="dropDownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Team Number
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropDownMenuButton">
+            <a class="dropdown-item" href="#">191</a>
+            <a class="dropdown-item" href="#">3838</a>
+        </div>
+    </div>
     <div class="col-lg-6 col-sm-12">
         <h3>Team Data: </h3>
         <div>
@@ -135,7 +144,7 @@
             var genLabels = function (datalength) {
                 var out = [];
                 for(i=0; i<datalength; i++){
-                    out.push(i+1);
+                    out.push("Match " + (i+1));
                 }
                 console.log(out);
                 return out;
