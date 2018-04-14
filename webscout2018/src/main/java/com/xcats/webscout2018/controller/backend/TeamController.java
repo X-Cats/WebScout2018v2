@@ -1,8 +1,11 @@
 package com.xcats.webscout2018.controller.backend;
 
+import com.xcats.XcatsScoutingLib.General.Data.TeamObject;
+import com.xcats.XcatsScoutingLib.General.Data.processed.ProcTeamObject;
 import com.xcats.webscout2018.model.backend.TeamEntity;
 import com.xcats.webscout2018.repositories.backend.MatchDataRepository;
 import com.xcats.webscout2018.repositories.backend.TeamDataRepository;
+import com.xcats.webscout2018.services.backend.TeamDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,23 +18,13 @@ import java.util.List;
 @RestController
 public class TeamController {
 	@Autowired
-	TeamDataRepository teamRepo;
-
-	@Autowired
-	MatchDataRepository matchRepo;
+	TeamDataService teamService;
 
 	@RequestMapping("/teams")
-	public List<ProcTeamObject> team(@RequestParam(value="num",defaultValue = "100000") int teamnum) {
+	public List<TeamObject> team(@RequestParam(value="num",defaultValue = "100000") int teamnum) {
 		if (teamnum != 100000) {
-			TeamEntity team = this.teamRepo.findByTeamNum(teamnum);
-			ProcTeamObject out = new ProcTeamObject(null, matchRepo.findAllById_Team(team), null, team);
-			return Arrays.asList(out);
+			return Arrays.asList(teamService.getTeamDataByTeamNum(teamnum));
 		}
-		Iterable<TeamEntity> teams = this.teamRepo.findAll();
-		List<ProcTeamObject> out = new ArrayList<>();
-		for (TeamEntity t : teams) {
-			out.add(new ProcTeamObject(null, matchRepo.findAllById_Team(t), null, t));
-		}
-		return out;
+		return teamService.getAllTeamData();
 	}
 }

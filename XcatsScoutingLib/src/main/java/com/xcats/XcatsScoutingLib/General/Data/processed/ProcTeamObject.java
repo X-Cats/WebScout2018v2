@@ -1,10 +1,10 @@
-package com.xcats.webscout2018.controller.backend;
+package com.xcats.XcatsScoutingLib.General.Data.processed;
 
 import com.xcats.XcatsScoutingLib.General.Data.TeamObject;
+import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.PitData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats;
-import com.xcats.webscout2018.model.backend.TeamEntity;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ public class ProcTeamObject implements TeamObject {
 	private PitData pitData;
 	private List<MatchData> matchData;
 	private TeamStats stats;
-	private TeamEntity team;
+	private Team team;
 
-	public ProcTeamObject(PitData pitData, List<MatchData> matchData, TeamStats stats, TeamEntity team) {
+	public ProcTeamObject(PitData pitData, List<MatchData> matchData, TeamStats stats, Team team) {
 		this.pitData = pitData;
 		this.matchData = matchData;
 		this.stats = stats;
