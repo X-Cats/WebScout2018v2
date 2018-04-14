@@ -1,7 +1,7 @@
 package com.xcats.XcatsScoutingLib.General.Stats;
 
-import com.xcats.XcatsScoutingLib.General.Data.MatchData;
-import com.xcats.XcatsScoutingLib.General.Data.Team;
+import com.xcats.XcatsScoutingLib.General.Data.raw.MatchData;
+import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
 
 public interface MatchStats {
 	public Team getTeam();

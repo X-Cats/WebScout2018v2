@@ -1,6 +1,6 @@
 package com.xcats.XcatsScoutingLib.General.Stats;
 
-import com.xcats.XcatsScoutingLib.General.Data.Team;
+import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
 
 import java.util.List;
 

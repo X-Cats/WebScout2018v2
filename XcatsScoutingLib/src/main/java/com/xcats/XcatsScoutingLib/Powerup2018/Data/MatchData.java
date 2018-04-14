@@ -1,9 +1,8 @@
 package com.xcats.XcatsScoutingLib.Powerup2018.Data;
 
-import com.xcats.XcatsScoutingLib.General.Enums.Alliance;
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupElementPos;
 
-public interface MatchData extends com.xcats.XcatsScoutingLib.General.Data.MatchData {
+public interface MatchData extends com.xcats.XcatsScoutingLib.General.Data.raw.MatchData {
 	//General Info
 	public PowerupElementPos getBlueSwitchPos();
 	public PowerupElementPos getRedSwitchPos();

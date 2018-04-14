@@ -1,4 +1,4 @@
-package com.xcats.XcatsScoutingLib.General.Data;
+package com.xcats.XcatsScoutingLib.General.Data.raw;
 
 import com.xcats.XcatsScoutingLib.General.Enums.Alliance;
 import com.xcats.XcatsScoutingLib.General.Enums.DriverPosition;

@@ -1,6 +1,6 @@
 package com.xcats.webscout2018.model.backend;
 
-import com.xcats.XcatsScoutingLib.General.Data.Team;
+import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.PitData;
 import com.xcats.webscout2018.model.backend.id.PitDataID;
 

@@ -1,6 +1,6 @@
 package com.xcats.webscout2018.model.backend;
 
-import com.xcats.XcatsScoutingLib.General.Data.Team;
+import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="teams", schema = "event")
-public class TeamEntity implements Team{
+public class TeamEntity implements Team {
 
 	@Id
 	@Column(name = "team_num")
@@ -27,12 +27,10 @@ public class TeamEntity implements Team{
 
 	}
 
-	@Override
 	public int getTeamNum() {
 		return this.teamNum;
 	}
 
-	@Override
 	public String getTeamName() {
 		return this.teamName;
 	}

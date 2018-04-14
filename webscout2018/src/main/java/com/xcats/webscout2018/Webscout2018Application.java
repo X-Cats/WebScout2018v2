@@ -20,7 +20,9 @@ public class Webscout2018Application {
 	CommandLineRunner init(TeamDataRepository repo) {
 		return args -> {
 			TeamEntity xcats = new TeamEntity(191,"X-Cats");
-			//repo.save(xcats);
+			TeamEntity roccity = new TeamEntity(3838,"Roc City Robotix");
+			repo.save(xcats);
+			repo.save(roccity);
 			//repo.findAll().forEach(System.out::println);
 		};
 	}
