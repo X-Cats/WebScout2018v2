@@ -4,7 +4,7 @@ import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.General.Enums.Alliance;
 import com.xcats.XcatsScoutingLib.General.Enums.DriverPosition;
 import com.xcats.XcatsScoutingLib.General.Enums.RobotPosition;
-import com.xcats.XcatsScoutingLib.Powerup2018.Data.MatchData;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupElementPos;
 import com.xcats.webscout2018.model.backend.id.MatchDataID;
 

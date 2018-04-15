@@ -1,4 +1,4 @@
-package com.xcats.XcatsScoutingLib.General.Data;
+package com.xcats.XcatsScoutingLib.General.Data.processed;
 
 import com.xcats.XcatsScoutingLib.General.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.General.Data.raw.PitData;
@@ -7,8 +7,8 @@ import com.xcats.XcatsScoutingLib.General.Stats.TeamStats;
 
 import java.util.List;
 
-public interface TeamObject extends Team {
-	PitData getPitData();
-	List<? extends MatchData> getMatchData();
-	TeamStats getStats();
+public interface TeamObject<P extends PitData,M extends MatchData,T extends TeamStats> extends Team {
+	P getPitData();
+	List<M> getMatchData();
+	T getStats();
 }

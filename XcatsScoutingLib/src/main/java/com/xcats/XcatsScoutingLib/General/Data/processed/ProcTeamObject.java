@@ -1,21 +1,20 @@
 package com.xcats.XcatsScoutingLib.General.Data.processed;
 
-import com.xcats.XcatsScoutingLib.General.Data.TeamObject;
+import com.xcats.XcatsScoutingLib.General.Data.raw.MatchData;
+import com.xcats.XcatsScoutingLib.General.Data.raw.PitData;
 import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
-import com.xcats.XcatsScoutingLib.Powerup2018.Data.MatchData;
-import com.xcats.XcatsScoutingLib.Powerup2018.Data.PitData;
-import com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats;
+import com.xcats.XcatsScoutingLib.General.Stats.TeamStats;
 
 import java.util.List;
 
-public class ProcTeamObject implements TeamObject {
+public abstract class ProcTeamObject<P extends PitData, M extends MatchData, T extends TeamStats> implements TeamObject<P,M,T> {
 
-	private PitData pitData;
-	private List<MatchData> matchData;
-	private TeamStats stats;
+	private P pitData;
+	private List<M> matchData;
+	private T stats;
 	private Team team;
 
-	public ProcTeamObject(PitData pitData, List<MatchData> matchData, TeamStats stats, Team team) {
+	public ProcTeamObject(P pitData, List<M> matchData, T stats, Team team) {
 		this.pitData = pitData;
 		this.matchData = matchData;
 		this.stats = stats;
@@ -23,17 +22,17 @@ public class ProcTeamObject implements TeamObject {
 	}
 
 	@Override
-	public PitData getPitData() {
+	public P getPitData() {
 		return pitData;
 	}
 
 	@Override
-	public List<MatchData> getMatchData() {
+	public List<M> getMatchData() {
 		return matchData;
 	}
 
 	@Override
-	public TeamStats getStats() {
+	public T getStats() {
 		return stats;
 	}
 

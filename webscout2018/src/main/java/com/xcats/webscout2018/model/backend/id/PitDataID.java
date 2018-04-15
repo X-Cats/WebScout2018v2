@@ -15,6 +15,10 @@ public class PitDataID implements Serializable{
 		this.team = t;
 	}
 
+	public PitDataID() {
+
+	}
+
 	public TeamEntity getTeam() {
 		return team;
 	}

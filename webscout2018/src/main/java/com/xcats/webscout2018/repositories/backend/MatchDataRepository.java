@@ -1,9 +1,8 @@
 package com.xcats.webscout2018.repositories.backend;
 
 import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
-import com.xcats.XcatsScoutingLib.Powerup2018.Data.MatchData;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.webscout2018.model.backend.MatchDataEntity;
-import com.xcats.webscout2018.model.backend.TeamEntity;
 import com.xcats.webscout2018.model.backend.id.MatchDataID;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

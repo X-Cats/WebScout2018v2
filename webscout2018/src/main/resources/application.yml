@@ -28,6 +28,12 @@ spring:
     console:
       enabled: true
       path: /console
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
 ---
 spring.profiles: deploy
 server.port: 80

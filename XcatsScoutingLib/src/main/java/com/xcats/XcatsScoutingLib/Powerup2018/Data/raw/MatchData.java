@@ -1,4 +1,4 @@
-package com.xcats.XcatsScoutingLib.Powerup2018.Data;
+package com.xcats.XcatsScoutingLib.Powerup2018.Data.raw;
 
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupElementPos;
 
