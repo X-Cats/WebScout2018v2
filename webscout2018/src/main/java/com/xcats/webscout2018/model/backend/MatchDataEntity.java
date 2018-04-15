@@ -8,9 +8,7 @@ import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupElementPos;
 import com.xcats.webscout2018.model.backend.id.MatchDataID;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -18,7 +16,8 @@ import java.io.Serializable;
 public class MatchDataEntity implements Serializable, MatchData {
 
 	public MatchDataEntity(TeamEntity team, int matchNum, Alliance alliance, String scoutName, DriverPosition driverPos, RobotPosition robotPos, PowerupElementPos blueSwitchPos, PowerupElementPos redSwitchPos, PowerupElementPos scalePos, boolean baselineCross, int autoCubesSwitch, int autoCubesSwitchFail, int autoCubesScale, int autoCubesScaleFail, int cubesSwitch, int cubesSwitchFail, int cubesScale, int cubesScaleFail, int cubesOppSwitch, int cubesOppSwitchFail, int cubesExchanged, boolean climb, int climbsAssisted) {
-		this.id = new MatchDataID(team,matchNum);
+		this.team = team;
+		this.matchNum = matchNum;
 		this.alliance = alliance;
 		this.scoutName = scoutName;
 		this.driverPos = driverPos;
@@ -44,7 +43,15 @@ public class MatchDataEntity implements Serializable, MatchData {
 
 	//General Data
 	@Id
-	MatchDataID id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="team_num",nullable = false)
+	private TeamEntity team;
+
+	@Id
+	@Column(name = "match_num")
+	private final int matchNum;
+
+
 	private Alliance alliance;
 	private String scoutName;
 	private DriverPosition driverPos;
@@ -77,12 +84,12 @@ public class MatchDataEntity implements Serializable, MatchData {
 
 	@Override
 	public Team getTeam() {
-		return id.getTeam();
+		return this.team;
 	}
 
 	@Override
 	public int getMatchNum() {
-		return id.getMatchNum();
+		return this.matchNum;
 	}
 
 	@Override

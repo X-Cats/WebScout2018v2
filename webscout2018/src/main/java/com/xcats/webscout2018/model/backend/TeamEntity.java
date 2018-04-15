@@ -5,11 +5,12 @@ import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name="teams", schema = "event")
-public class TeamEntity implements Team {
+public class TeamEntity implements Serializable,Team {
 
 	@Id
 	@Column(name = "team_num")
@@ -20,10 +21,10 @@ public class TeamEntity implements Team {
 
 	@OneToOne(fetch = FetchType.LAZY,
 		cascade = CascadeType.ALL,
-		mappedBy = "team_pitdata")
+		mappedBy = "team")
 	private PitDataEntity pitData;
 
-	@OneToMany(mappedBy = "match_data")
+	@OneToMany(mappedBy = "team")
 	private Set<MatchDataEntity> matches;
 
 	public TeamEntity(int teamNum, String teamName) {

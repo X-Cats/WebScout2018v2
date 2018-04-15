@@ -18,7 +18,9 @@ public class MatchDataID implements Serializable {
 		this.team = team;
 		this.matchNum = matchNum;
 	}
-	private MatchDataID() {this(null,0);}
+	protected MatchDataID() {
+		matchNum = 0;
+	}
 
 	public TeamEntity getTeam() {
 		return team;

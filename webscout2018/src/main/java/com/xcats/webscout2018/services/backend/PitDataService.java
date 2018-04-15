@@ -1,8 +1,6 @@
 package com.xcats.webscout2018.services.backend;
 
-import com.xcats.XcatsScoutingLib.General.Data.raw.PitData;
 import com.xcats.webscout2018.model.backend.PitDataEntity;
-import com.xcats.webscout2018.model.backend.TeamEntity;
 import com.xcats.webscout2018.repositories.backend.PitDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
