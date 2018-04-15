@@ -1,6 +1,6 @@
 package com.xcats.webscout2018.model.backend;
 
-import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.General.Enums.Alliance;
 import com.xcats.XcatsScoutingLib.General.Enums.DriverPosition;
 import com.xcats.XcatsScoutingLib.General.Enums.RobotPosition;

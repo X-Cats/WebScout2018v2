@@ -21,7 +21,7 @@ public class PitDataEntity implements PitData {
 		this.autoBaselineCross = autoBaselineCross;
 	}
 
-	public PitDataEntity() {
+	protected PitDataEntity() {
 
 	}
 

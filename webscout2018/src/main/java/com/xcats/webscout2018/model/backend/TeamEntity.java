@@ -1,11 +1,11 @@
 package com.xcats.webscout2018.model.backend;
 
-import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.PitData;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
+import com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="teams", schema = "event")
@@ -18,12 +18,20 @@ public class TeamEntity implements Team {
 	@Column(name = "team_name")
 	private String teamName;
 
+	@OneToOne(fetch = FetchType.LAZY,
+		cascade = CascadeType.ALL,
+		mappedBy = "team_pitdata")
+	private PitDataEntity pitData;
+
+	@OneToMany(mappedBy = "match_data")
+	private Set<MatchDataEntity> matches;
+
 	public TeamEntity(int teamNum, String teamName) {
 		this.teamNum = teamNum;
 		this.teamName = teamName;
 	}
 
-	public TeamEntity() {
+	protected TeamEntity() {
 
 	}
 
@@ -33,5 +41,20 @@ public class TeamEntity implements Team {
 
 	public String getTeamName() {
 		return this.teamName;
+	}
+
+	@Override
+	public PitData getPitData() {
+		return pitData;
+	}
+
+	@Override
+	public Set<MatchDataEntity> getMatchData() {
+		return matches;
+	}
+
+	@Override
+	public TeamStats getStats() {
+		return null;
 	}
 }

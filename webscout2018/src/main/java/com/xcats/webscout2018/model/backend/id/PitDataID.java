@@ -15,7 +15,8 @@ public class PitDataID implements Serializable{
 		this.team = t;
 	}
 
-	public PitDataID() {
+	@SuppressWarnings("unused")
+	protected PitDataID() {
 
 	}
 
