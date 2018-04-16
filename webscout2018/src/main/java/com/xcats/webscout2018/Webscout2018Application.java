@@ -2,7 +2,6 @@ package com.xcats.webscout2018;
 
 import com.xcats.webscout2018.model.backend.PitDataEntity;
 import com.xcats.webscout2018.model.backend.TeamEntity;
-import com.xcats.webscout2018.repositories.backend.PitDataRepository;
 import com.xcats.webscout2018.repositories.backend.TeamDataRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,14 +19,12 @@ public class Webscout2018Application {
 
 	@Bean
 	@Profile("dev")
-	CommandLineRunner init(TeamDataRepository repo, PitDataRepository pitRepo) {
+	CommandLineRunner init(TeamDataRepository repo) {
 		return args -> {
 			TeamEntity xcats = new TeamEntity(191,"X-Cats");
 			TeamEntity roccity = new TeamEntity(3838,"Roc City Robotix");
 			repo.save(xcats);
 			repo.save(roccity);
-			PitDataEntity xdata = new PitDataEntity(xcats,true);
-			pitRepo.save(xdata);
 			//repo.findAll().forEach(System.out::println);
 		};
 	}

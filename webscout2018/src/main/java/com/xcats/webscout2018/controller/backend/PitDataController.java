@@ -18,9 +18,9 @@ public class PitDataController {
 
 
 	@RequestMapping(value = "/pd", method = RequestMethod.POST)
-	public boolean saveData(@RequestBody PitDataRequestWrapper toSave) {
-		PitDataEntity entity = new PitDataEntity(teamService.getTeam(toSave.getTeamNum()),toSave.getAutoBaselineCross());
-		return pdService.addPitData(entity);
+	public void saveData(@RequestBody PitDataRequestWrapper toSave) {
+		PitDataEntity entity = new PitDataEntity(toSave.getAutoBaselineCross());
+		pdService.addPitData(toSave.getTeamNum(),entity);
 	}
 
 	@RequestMapping(value = "/pd", method = RequestMethod.GET)

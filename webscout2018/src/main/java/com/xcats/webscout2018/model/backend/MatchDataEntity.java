@@ -44,7 +44,7 @@ public class MatchDataEntity implements Serializable, MatchData {
 	//General Data
 	@Id
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="team_num",nullable = false)
+	@PrimaryKeyJoinColumn(name="team_num")
 	private TeamEntity team;
 
 	@Id

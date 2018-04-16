@@ -8,6 +8,8 @@ public interface Team<P extends PitData, M extends MatchData, S extends TeamStat
 	public int getTeamNum();
 	public String getTeamName();
 	public P getPitData();
+	public void setPitData(P pitData);
 	public Set<? extends M> getMatchData();
+	public void addMatchData(M matchData);
 	public S getStats();
 }

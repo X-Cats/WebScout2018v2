@@ -1,5 +1,6 @@
 package com.xcats.webscout2018.model.backend;
 
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.PitData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats;
@@ -7,6 +8,7 @@ import com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
+import java.util.SortedSet;
 
 @Entity
 @Table(name="teams", schema = "event")
@@ -19,13 +21,11 @@ public class TeamEntity implements Serializable,Team {
 	@Column(name = "team_name")
 	private String teamName;
 
-	@OneToOne(fetch = FetchType.LAZY,
-		cascade = CascadeType.ALL,
-		mappedBy = "team")
+	@Embedded
 	private PitDataEntity pitData;
 
 	@OneToMany(mappedBy = "team")
-	private Set<MatchDataEntity> matches;
+	private SortedSet<MatchDataEntity> matches;
 
 	public TeamEntity(int teamNum, String teamName) {
 		this.teamNum = teamNum;
@@ -50,8 +50,18 @@ public class TeamEntity implements Serializable,Team {
 	}
 
 	@Override
-	public Set<MatchDataEntity> getMatchData() {
+	public void setPitData(PitData pitData) {
+		this.pitData = (PitDataEntity) pitData;
+	}
+
+	@Override
+	public SortedSet<MatchDataEntity> getMatchData() {
 		return matches;
+	}
+
+	@Override
+	public void addMatchData(MatchData matchData) {
+		this.matches.add((MatchDataEntity) matchData);
 	}
 
 	@Override
