@@ -1,5 +1,6 @@
 package com.xcats.webscout2018.model.backend;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.General.Enums.Alliance;
 import com.xcats.XcatsScoutingLib.General.Enums.DriverPosition;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@IdClass(MatchDataID.class)
 @Table(name="match_data",schema = "event")
 public class MatchDataEntity implements Serializable, MatchData {
 
@@ -40,16 +42,18 @@ public class MatchDataEntity implements Serializable, MatchData {
 		this.climb = climb;
 		this.climbsAssisted = climbsAssisted;
 	}
+	protected MatchDataEntity() {}
 
 	//General Data
 	@Id
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@PrimaryKeyJoinColumn(name="team_num")
 	private TeamEntity team;
 
 	@Id
 	@Column(name = "match_num")
-	private final int matchNum;
+	private int matchNum;
 
 
 	private Alliance alliance;

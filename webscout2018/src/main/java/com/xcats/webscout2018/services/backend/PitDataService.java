@@ -12,7 +12,7 @@ public class PitDataService {
 	TeamDataService teamService;
 
 	public void addPitData(int teamnum, PitDataEntity in) {
-		teamService.getTeam(teamnum).setPitData(in);
+		teamService.setPitDataByTeamNum(teamnum,in);
 	}
 
 }

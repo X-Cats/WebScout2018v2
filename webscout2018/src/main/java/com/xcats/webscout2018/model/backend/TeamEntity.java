@@ -7,6 +7,7 @@ import com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 
@@ -25,7 +26,7 @@ public class TeamEntity implements Serializable,Team {
 	private PitDataEntity pitData;
 
 	@OneToMany(mappedBy = "team")
-	private SortedSet<MatchDataEntity> matches;
+	private List<MatchDataEntity> matches;
 
 	public TeamEntity(int teamNum, String teamName) {
 		this.teamNum = teamNum;
@@ -55,7 +56,7 @@ public class TeamEntity implements Serializable,Team {
 	}
 
 	@Override
-	public SortedSet<MatchDataEntity> getMatchData() {
+	public List<MatchDataEntity> getMatchData() {
 		return matches;
 	}
 

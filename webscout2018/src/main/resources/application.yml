@@ -14,6 +14,7 @@ spring.jpa:
       show_sql: true
       use_sql_comments: false
       format_sql: true
+spring.jackson.serialization.indent_output: true
 #Security Settings
 spring.security:
   user:
