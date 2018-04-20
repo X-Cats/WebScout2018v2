@@ -1,5 +1,7 @@
 package com.xcats.webscout2018.model.backend;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.PitData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
@@ -31,6 +33,7 @@ public class TeamEntity implements Serializable,Team {
 	public TeamEntity(int teamNum, String teamName) {
 		this.teamNum = teamNum;
 		this.teamName = teamName;
+		teamStats = new TeamStatsEntity();
 	}
 
 	protected TeamEntity() {
@@ -65,8 +68,9 @@ public class TeamEntity implements Serializable,Team {
 		this.matches.add((MatchDataEntity) matchData);
 	}
 
+	@JsonValue
 	@Override
 	public TeamStats getStats() {
-		return null;
+		return new com.xcats.webscout2018.model.backend.TeamStats(this.matches);
 	}
 }
