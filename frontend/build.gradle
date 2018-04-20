@@ -1,0 +1,18 @@
+buildscript {
+  maven {
+    url "https://plugins.gradle.org/m2/"
+  }
+  dependencies {
+    classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+  }
+}
+apply plugin:"com.moowork.node"
+
+task buildClientDev(type: NpmTask, dependsOn: 'npmInstall') {
+  group: 'build'
+  description: 'compile client side stuff'
+  args: ['run','buildDev']
+}
+group 'com.xcats'
+version '1.0-SNAPSHOT'
+
