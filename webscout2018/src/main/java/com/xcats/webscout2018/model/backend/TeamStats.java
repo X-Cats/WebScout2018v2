@@ -10,7 +10,6 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 
 	public TeamStats(List<MatchDataEntity> matchData) {
 		this.matchData = matchData;
-		scaleData =
 	}
 
 	private List<? extends MatchData> matchData;
