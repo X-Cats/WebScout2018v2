@@ -41,8 +41,6 @@ public class MatchDataRequestWrapper {
 	private boolean climb;
 	private int climbsAssisted;
 
-
-
 	public MatchDataEntity toMatchDataEntity(TeamEntity team) {
 		return new MatchDataEntity(team, matchNum, alliance, scoutName,driverPos,
 				robotPos, blueSwitchPos, redSwitchPos, scalePos, baselineCross,
