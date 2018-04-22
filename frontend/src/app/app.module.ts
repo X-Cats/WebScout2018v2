@@ -10,7 +10,8 @@ import { AppTeamviewComponent } from './app-teamview/app-teamview.component';
 import { AppPicklistComponent } from './app-picklist/app-picklist.component';
 import { TeamgraphComponent } from './app-teamview/teamgraph/teamgraph.component';
 import { TeamtablesComponent } from './app-teamview/teamtables/teamtables.component';
-import {TeamserviceService} from "./teamservice.service";
+import { TeamserviceService} from "./teamservice.service";
+import { Team } from "./team";
 
 @NgModule({
   declarations: [

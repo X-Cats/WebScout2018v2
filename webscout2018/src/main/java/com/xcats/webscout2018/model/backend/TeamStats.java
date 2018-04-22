@@ -139,22 +139,54 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 
 	@Override
 	public double getFocusedAverageScale() {
-		return 0;
+		double statCount = 0;
+		double cubeCount = 0;
+		for(MatchStats M : getMatchStats()) {
+			if(M.getFocus().equals(PowerupMatchFocus.SCALE)) {
+				statCount += 1;
+				cubeCount += M.getMatchData().getCubesScale();
+			}
+		}
+		return (cubeCount / statCount);
 	}
 
 	@Override
 	public double getFocusedAverageSwitch() {
-		return 0;
+		double statCount = 0;
+		double cubeCount = 0;
+		for(MatchStats M : getMatchStats()) {
+			if(M.getFocus().equals(PowerupMatchFocus.OWN_SWITCH)) {
+				statCount += 1;
+				cubeCount += M.getMatchData().getCubesSwitch();
+			}
+		}
+		return (cubeCount / statCount);
 	}
 
 	@Override
 	public double getFocusedAverageOppSwitch() {
-		return 0;
+		double statCount = 0;
+		double cubeCount = 0;
+		for(MatchStats M : getMatchStats()) {
+			if(M.getFocus().equals(PowerupMatchFocus.OPP_SWITCH)) {
+				statCount += 1;
+				cubeCount += M.getMatchData().getCubesOppSwitch();
+			}
+		}
+		return (cubeCount / statCount);
 	}
 
 	@Override
 	public double getFocusedAverageExchange() {
-		return 0;
+		double statCount = 0;
+		double cubeCount = 0;
+		for(MatchStats M : getMatchStats()) {
+			if(M.getFocus().equals(PowerupMatchFocus.EXCHANGE)) {
+				statCount += 1;
+				cubeCount += M.getMatchData().getCubesExchanged();
+			}
+		}
+		return (cubeCount / statCount);
 	}
 
 	@JsonIgnore
@@ -167,4 +199,5 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 	public int getTotalMatchesPlayed() {
 		return this.matchData.size();
 	}
+
 }

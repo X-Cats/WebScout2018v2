@@ -18,9 +18,8 @@ export class TeamgraphComponent implements OnInit {
   ngOnInit() {
     this.teamserver.updateTeams()
       .subscribe(teams => {
-      let teamnums = teams.map(teams => teams.scaleData);
-      this.num = teamnums;
-      console.log(teamnums);
+      let allteams = teams;
+      console.log(teams);
     })
   }
 

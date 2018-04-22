@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TeamserviceService} from "../../teamservice.service";
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'team-teamtables',
@@ -20,6 +21,11 @@ export class TeamtablesComponent implements OnInit {
   percOppSwitchFocus = 0;
   percExchangeFocus = 0;
 
+  avgFocusedSwitch= 0;
+  avgFocusedScale = 0;
+  avgFocusedOppSwitch = 0;
+  avgFocusedExchange = 0;
+
   ngOnInit() {
     this.teamserver.updateTeams()
       .subscribe(teams => {
@@ -34,6 +40,11 @@ export class TeamtablesComponent implements OnInit {
         this.percScaleFocus = stats[0].percentFocusScale;
         this.percOppSwitchFocus = stats[0].percentFocusOppSwitch;
         this.percExchangeFocus = stats[0].percentFocusExchange;
+
+        this.avgFocusedSwitch = stats[0].focusedAverageSwitch;
+        this.avgFocusedScale = stats[0].focusedAverageScale;
+        this.avgFocusedOppSwitch = stats[0].focusedAverageOppSwitch;
+        this.avgFocusedExchange = stats[0].focusedAverageExchange;
 
         console.log(stats);
       })
