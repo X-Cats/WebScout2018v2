@@ -39,7 +39,7 @@ public class Webscout2018Application {
 					true,1,0,1,
 					0, 3,0,6,1,
 					0,0, 0, true, 0);
-			matchRepo.save(toAdd);
+			//matchRepo.save(toAdd);
 			repo.save(xcats);
 
 			//repo.findAll().forEach(System.out::println);

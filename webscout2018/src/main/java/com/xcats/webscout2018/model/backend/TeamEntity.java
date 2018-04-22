@@ -66,7 +66,7 @@ public class TeamEntity implements Serializable,Team {
 		this.matches.add((MatchDataEntity) matchData);
 	}
 
-	@JsonValue
+	@JsonInclude
 	@Override
 	public TeamStats getStats() {
 		return new com.xcats.webscout2018.model.backend.TeamStats(this.matches);

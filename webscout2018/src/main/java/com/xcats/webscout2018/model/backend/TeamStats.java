@@ -1,44 +1,54 @@
 package com.xcats.webscout2018.model.backend;
 
-import com.xcats.XcatsScoutingLib.General.Stats.MatchStats;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupMatchFocus;
+import com.xcats.XcatsScoutingLib.Powerup2018.Stats.MatchStats;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.TeamStats {
 
 	public TeamStats(List<MatchDataEntity> matchData) {
 		this.matchData = matchData;
+
+		this.scaleData = matchData.stream().map(MatchData::getCubesScale).collect(Collectors.toList());
+		this.switchData = matchData.stream().map(MatchData::getCubesSwitch).collect(Collectors.toList());
+		this.oppSwitchData = matchData.stream().map(MatchData::getCubesOppSwitch).collect(Collectors.toList());
+		this.exchangeData = matchData.stream().map(MatchData::getCubesExchanged).collect(Collectors.toList());
+
+		this.stats = matchData.stream().map(MatchStats::new).collect(Collectors.toList());
 	}
 
 	private List<? extends MatchData> matchData;
 
-	private int[] scaleData;
-	private int[] switchData;
-	private int[] oppSwitchData;
-	private int[] exchangeData;
+	private List<Integer> scaleData;
+	private List<Integer> switchData;
+	private List<Integer> oppSwitchData;
+	private List<Integer> exchangeData;
 
+	private List<MatchStats> stats;
 
 
 	@Override
-	public int[] getScaleData() {
-		return new int[0];
+	public List<Integer> getScaleData() {
+		return this.scaleData;
 	}
 
 	@Override
-	public int[] getSwitchData() {
-		return new int[0];
+	public List<Integer> getSwitchData() {
+		return this.switchData;
 	}
 
 	@Override
-	public int[] getOppSwitchData() {
-		return new int[0];
+	public List<Integer> getOppSwitchData() {
+		return this.oppSwitchData;
 	}
 
 	@Override
-	public int[] getExchangeData() {
-		return new int[0];
+	public List<Integer> getExchangeData() {
+		return this.exchangeData;
 	}
 
 	@Override
@@ -68,42 +78,58 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 
 	@Override
 	public int getFocusScale() {
-		return 0;
+		try {
+			return getMatchStats().stream().filter(x -> PowerupMatchFocus.SCALE.equals(x.getFocus())).collect(Collectors.toList()).size();
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
 	@Override
 	public int getFocusSwitch() {
-		return 0;
+		try {
+			return getMatchStats().stream().filter(x -> PowerupMatchFocus.OWN_SWITCH.equals(x.getFocus())).collect(Collectors.toList()).size();
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
 	@Override
 	public int getFocusOppSwitch() {
-		return 0;
+		try {
+			return getMatchStats().stream().filter(x -> PowerupMatchFocus.OPP_SWITCH.equals(x.getFocus())).collect(Collectors.toList()).size();
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
 	@Override
 	public int getFocusExchange() {
-		return 0;
+		try {
+			return getMatchStats().stream().filter(x -> PowerupMatchFocus.EXCHANGE.equals(x.getFocus())).collect(Collectors.toList()).size();
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
 	@Override
 	public double getPercentFocusScale() {
-		return 0;
+		return ((double) getFocusScale() / (double) stats.size()) * 1E2;
 	}
 
 	@Override
 	public double getPercentFocusSwitch() {
-		return 0;
+		return ((double) getFocusSwitch() / (double) stats.size()) * 1E2;
 	}
 
 	@Override
 	public double getPercentFocusOppSwitch() {
-		return 0;
+		return ((double) getFocusOppSwitch() / (double) stats.size()) * 1E2;
 	}
 
 	@Override
 	public double getPercentFocusExchange() {
-		return 0;
+		return ((double) getFocusExchange() / (double) stats.size()) * 1E2;
 	}
 
 	@Override
@@ -131,13 +157,14 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 		return 0;
 	}
 
+	@JsonIgnore
 	@Override
 	public List<MatchStats> getMatchStats() {
-		return null;
+		return stats;
 	}
 
 	@Override
 	public int getTotalMatchesPlayed() {
-		return 0;
+		return this.matchData.size();
 	}
 }

@@ -42,7 +42,7 @@ public class MatchDataRequestWrapper {
 	private int climbsAssisted;
 
 	public MatchDataEntity toMatchDataEntity(TeamEntity team) {
-		return new MatchDataEntity(team, matchNum, alliance, scoutName,driverPos,
+		return new MatchDataEntity(team, this.getMatchNum(), alliance, scoutName,driverPos,
 				robotPos, blueSwitchPos, redSwitchPos, scalePos, baselineCross,
 				autoCubesSwitch, autoCubesSwitchFail, autoCubesScale, autoCubesScaleFail,
 				cubesSwitch, cubesSwitchFail, cubesScale, cubesScaleFail,
@@ -51,5 +51,90 @@ public class MatchDataRequestWrapper {
 
 	public int getTeamNum() {
 		return teamNum;
+	}
+	public int getMatchNum() { return matchNum; }
+
+	public Alliance getAlliance() {
+		return alliance;
+	}
+
+	public String getScoutName() {
+		return scoutName;
+	}
+
+	public DriverPosition getDriverPos() {
+		return driverPos;
+	}
+
+	public RobotPosition getRobotPos() {
+		return robotPos;
+	}
+
+	public PowerupElementPos getBlueSwitchPos() {
+		return blueSwitchPos;
+	}
+
+	public PowerupElementPos getRedSwitchPos() {
+		return redSwitchPos;
+	}
+
+	public PowerupElementPos getScalePos() {
+		return scalePos;
+	}
+
+	public boolean isBaselineCross() {
+		return baselineCross;
+	}
+
+	public int getAutoCubesSwitch() {
+		return autoCubesSwitch;
+	}
+
+	public int getAutoCubesSwitchFail() {
+		return autoCubesSwitchFail;
+	}
+
+	public int getAutoCubesScale() {
+		return autoCubesScale;
+	}
+
+	public int getAutoCubesScaleFail() {
+		return autoCubesScaleFail;
+	}
+
+	public int getCubesSwitch() {
+		return cubesSwitch;
+	}
+
+	public int getCubesSwitchFail() {
+		return cubesSwitchFail;
+	}
+
+	public int getCubesScale() {
+		return cubesScale;
+	}
+
+	public int getCubesScaleFail() {
+		return cubesScaleFail;
+	}
+
+	public int getCubesOppSwitch() {
+		return cubesOppSwitch;
+	}
+
+	public int getCubesOppSwitchFail() {
+		return cubesOppSwitchFail;
+	}
+
+	public int getCubesExchanged() {
+		return cubesExchanged;
+	}
+
+	public boolean isClimb() {
+		return climb;
+	}
+
+	public int getClimbsAssisted() {
+		return climbsAssisted;
 	}
 }

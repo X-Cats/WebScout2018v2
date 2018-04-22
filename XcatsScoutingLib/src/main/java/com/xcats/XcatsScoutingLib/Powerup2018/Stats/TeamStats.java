@@ -2,13 +2,15 @@ package com.xcats.XcatsScoutingLib.Powerup2018.Stats;
 
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.*;
 
-public interface TeamStats extends com.xcats.XcatsScoutingLib.General.Stats.TeamStats {
+import java.util.List;
+
+public interface TeamStats extends com.xcats.XcatsScoutingLib.General.Stats.TeamStats<MatchStats> {
 
 	//Methods for returning raw data
-	int[] getScaleData();
-	int[] getSwitchData();
-	int[] getOppSwitchData();
-	int[] getExchangeData();
+	List<Integer> getScaleData();
+	List<Integer> getSwitchData();
+	List<Integer> getOppSwitchData();
+	List<Integer> getExchangeData();
 	boolean[] getClimbData();
 
 	//Methods for returning capabilities
