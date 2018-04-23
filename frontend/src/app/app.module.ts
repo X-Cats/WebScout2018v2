@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { NgbDropdownModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
+import { DataTableModule } from "ngx-datatable-bootstrap4";
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes, {useHash: true}),
     NgbDropdownModule,
+    DataTableModule,
     NgbModule
   ],
   providers: [TeamserviceService],

@@ -32,4 +32,8 @@ export class TeamserviceService {
     resObject.subscribe( team => this.currentTeamSource.next(team));
   }
 
+  public getAllTeams() {
+    return this._http.get<Array<Team>>(environment.api + "/teams").map(response => response);
+  }
+
 }
