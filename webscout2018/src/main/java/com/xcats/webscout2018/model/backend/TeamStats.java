@@ -114,21 +114,25 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 
 	@Override
 	public double getPercentFocusScale() {
+		if(stats.size() == 0) return 0;
 		return ((double) getFocusScale() / (double) stats.size()) * 1E2;
 	}
 
 	@Override
 	public double getPercentFocusSwitch() {
+		if(stats.size() == 0) return 0;
 		return ((double) getFocusSwitch() / (double) stats.size()) * 1E2;
 	}
 
 	@Override
 	public double getPercentFocusOppSwitch() {
+		if(stats.size() == 0) return 0;
 		return ((double) getFocusOppSwitch() / (double) stats.size()) * 1E2;
 	}
 
 	@Override
 	public double getPercentFocusExchange() {
+		if(stats.size() == 0) return 0;
 		return ((double) getFocusExchange() / (double) stats.size()) * 1E2;
 	}
 
@@ -147,7 +151,9 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 				cubeCount += M.getMatchData().getCubesScale();
 			}
 		}
-		return (cubeCount / statCount);
+		double out = cubeCount / statCount;
+		if(statCount == 0) return 0;
+		return out;
 	}
 
 	@Override
@@ -160,7 +166,9 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 				cubeCount += M.getMatchData().getCubesSwitch();
 			}
 		}
-		return (cubeCount / statCount);
+		double out = cubeCount / statCount;
+		if(statCount == 0) return 0;
+		return out;
 	}
 
 	@Override
@@ -173,7 +181,9 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 				cubeCount += M.getMatchData().getCubesOppSwitch();
 			}
 		}
-		return (cubeCount / statCount);
+		double out = cubeCount / statCount;
+		if(statCount == 0) return 0;
+		return out;
 	}
 
 	@Override
@@ -186,7 +196,9 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 				cubeCount += M.getMatchData().getCubesExchanged();
 			}
 		}
-		return (cubeCount / statCount);
+		double out = cubeCount / statCount;
+		if(statCount == 0) return 0;
+		return out;
 	}
 
 	@JsonIgnore
@@ -199,5 +211,4 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 	public int getTotalMatchesPlayed() {
 		return this.matchData.size();
 	}
-
 }

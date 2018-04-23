@@ -11,11 +11,11 @@ export class AppNavbarComponent implements OnInit {
   constructor(private router: Router) { }
 
   goTeam() {
-    this.router.navigate(['']);
+    this.router.navigate(['teams']);
   }
 
   goPick() {
-    this.router.navigate(['']);
+    this.router.navigate(['pick']);
   }
 
   ngOnInit() {

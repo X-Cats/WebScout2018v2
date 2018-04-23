@@ -1,5 +1,4 @@
-<h3>Team Data: </h3>
-<div>
+<div *ngIf="currStats">
   <h4>Cube Placement: </h4>
   <table class="table">
     <thead>
@@ -14,30 +13,30 @@
     <tr>
       <td>Switch</td>
       <td>Yes</td>
-      <td>{{percSwitchFocus | number:'.0-0'}}%</td>
-      <td>{{switchFocus}}</td>
-      <td>{{avgFocusedSwitch | number:'.1-1'}}</td>
+      <td>{{currStats.percentFocusSwitch | number:'.0-0'}}%</td>
+      <td>{{currStats.focusSwitch}}</td>
+      <td>{{currStats.focusedAverageSwitch | number:'.1-1'}}</td>
     </tr>
     <tr>
       <td>Scale</td>
       <td>Yes</td>
-      <td>{{percScaleFocus | number:'.0-0'}}%</td>
-      <td>{{scaleFocus}}</td>
-      <td>{{avgFocusedScale | number:'.1-1'}}</td>
+      <td>{{currStats.percentFocusScale | number:'.0-0'}}%</td>
+      <td>{{currStats.focusScale}}</td>
+      <td>{{currStats.focusedAverageScale | number:'.1-1'}}</td>
     </tr>
     <tr>
       <td>Opposite Switch</td>
       <td>Yes</td>
-      <td>{{percOppSwitchFocus | number:'.0-0'}}%</td>
-      <td>{{oppSwitchFocus}}</td>
-      <td>{{avgFocusedOppSwitch | number:'.1-1'}}</td>
+      <td>{{currStats.percentFocusOppSwitch | number:'.0-0'}}%</td>
+      <td>{{currStats.focusOppSwitch}}</td>
+      <td>{{currStats.focusedAverageOppSwitch | number:'.1-1'}}</td>
     </tr>
     <tr>
       <td>Exchange</td>
       <td>Yes</td>
-      <td>{{percExchangeFocus | number:'.0-0'}}%</td>
-      <td>{{exchangeFocus}}</td>
-      <td>{{avgFocusedExchange | number:'.1-1'}}</td>
+      <td>{{currStats.percentFocusExchange | number:'.0-0'}}%</td>
+      <td>{{currStats.focusExchange}}</td>
+      <td>{{currStats.focusedAverageExchange | number:'.1-1'}}</td>
     </tr>
   </table>
 </div>

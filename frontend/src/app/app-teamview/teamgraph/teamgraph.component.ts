@@ -1,25 +1,71 @@
 import { Component, OnInit } from '@angular/core';
+import * as Chart from 'chart.js';
 import { TeamserviceService} from "../../teamservice.service";
 import 'rxjs/add/operator/map';
+
+function genLabels (x: number) {
+  let out = [];
+  for(let i = 0; i<x; i++){
+    out.push("Match " + (i+1));
+  }
+  console.log(out);
+  return out;
+}
 
 @Component({
   selector: 'team-teamgraph',
   templateUrl: './teamgraph.component.html',
   styleUrls: ['./teamgraph.component.css']
 })
+
 export class TeamgraphComponent implements OnInit {
 
-  chart = [];
+  currStats = {
+    'totalMatchesPlayed': 0,
+    'scaleData': [],
+    'switchData': [],
+    'oppSwitchData': [],
+    'exchangeData': []
+  };
 
-  num = 0;
+  chart = {};
+
 
   constructor(private teamserver: TeamserviceService) { }
 
   ngOnInit() {
-    this.teamserver.updateTeams()
-      .subscribe(teams => {
-      let allteams = teams;
-      console.log(teams);
+    this.teamserver.currentTeam.subscribe(team => {
+      this.currStats = team.stats;
+
+      this.chart = new Chart("canvas", {
+          type:'line',
+          data: {
+            labels: genLabels(this.currStats.totalMatchesPlayed),
+            datasets: [
+              {
+                data: this.currStats.scaleData,
+                label: "Scale",
+                borderColor: "#f8ca00"
+              },
+              {
+                data: this.currStats.switchData,
+                label: "Switch",
+                borderColor:"#00c853"
+              },
+              {
+                data: this.currStats.oppSwitchData,
+                label: "Opp. Switch",
+                borderColor: "#b5b0b0"
+              },
+              {
+                data: this.currStats.exchangeData,
+                label: "Exchange"
+              }
+            ]
+          },
+          options: this.options
+        });
+      console.log(team);
     })
   }
 
@@ -31,11 +77,6 @@ export class TeamgraphComponent implements OnInit {
     }
   }
 
-  // this.chart = new Chart('statsGraph', {
-  //   type:'line',
-  //   data: {
-  //
-  //   },
-  //   options: this.options
-  // })
+
+
 }
