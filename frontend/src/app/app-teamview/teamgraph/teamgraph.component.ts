@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
 import { TeamserviceService} from "../../teamservice.service";
 import 'rxjs/add/operator/map';
+import {Stats} from "../../team";
 
 function genLabels (x: number) {
   let out = [];
@@ -20,13 +21,7 @@ function genLabels (x: number) {
 
 export class TeamgraphComponent implements OnInit {
 
-  currStats = {
-    'totalMatchesPlayed': 0,
-    'scaleData': [],
-    'switchData': [],
-    'oppSwitchData': [],
-    'exchangeData': []
-  };
+  currStats: Stats;
 
   chart = {};
 

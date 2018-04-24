@@ -33,7 +33,7 @@ export class TeamserviceService {
   }
 
   public getAllTeams() {
-    return this._http.get<Array<Team>>(environment.api + "/teams").map(response => response);
+    return this._http.get<Team[]>(environment.api + "/teams").map(response => response);
   }
 
   public addMatchData(files: FileList) {

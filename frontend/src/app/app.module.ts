@@ -7,7 +7,7 @@ import { RouterModule } from "@angular/router";
 import { NgbDropdownModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
-import { CdkTableModule } from "@angular/cdk/table";
+import { SuperTableModule } from "ngx-super-table";
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
@@ -17,6 +17,8 @@ import { TeamgraphComponent } from './app-teamview/teamgraph/teamgraph.component
 import { TeamtablesComponent } from './app-teamview/teamtables/teamtables.component';
 import { TeamserviceService} from "./teamservice.service";
 import {Routes} from "@angular/router";
+import { PickModalComponent } from './app-picklist/pick-modal/pick-modal.component';
+import { PickTableComponent } from './app-picklist/pick-table/pick-table.component';
 
 const routes: Routes = [
   {path: '', component: AppTeamviewComponent},
@@ -31,7 +33,9 @@ const routes: Routes = [
     AppTeamviewComponent,
     AppPicklistComponent,
     TeamgraphComponent,
-    TeamtablesComponent
+    TeamtablesComponent,
+    PickModalComponent,
+    PickTableComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {useHash: true}),
     NgbDropdownModule,
     AngularFontAwesomeModule,
-    CdkTableModule,
+    SuperTableModule,
     NgbModule
   ],
   providers: [TeamserviceService],

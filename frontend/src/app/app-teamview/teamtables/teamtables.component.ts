@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TeamserviceService} from "../../teamservice.service";
 import 'rxjs/add/operator/map';
-import {Team} from "../../team";
+import {Stats, Team} from "../../team";
 import {Observable} from "rxjs/Observable";
 
 @Component({
@@ -13,7 +13,7 @@ export class TeamtablesComponent implements OnInit {
 
   constructor(private teamserver: TeamserviceService) { }
 
-  currStats = {};
+  currStats: Stats;
 
   ngOnInit() {
     this.teamserver.currentTeam.subscribe(team => {
