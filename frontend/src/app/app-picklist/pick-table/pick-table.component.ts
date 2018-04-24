@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TeamserviceService} from "../../teamservice.service";
 import {ISuperTableColumn, superTableSorters, ISuperTableOptions} from "ngx-super-table";
-import {Team} from "../../team";
 
 @Component({
   selector: 'app-pick-table',
@@ -11,34 +10,35 @@ import {Team} from "../../team";
       [columns]="columns"
       [options]="options"
       [tableClasses]="tableClasses">
+      
     </super-table>
   `,
   styleUrls: ['./pick-table.component.css']
 })
 export class PickTableComponent implements OnInit {
 
-  constructor(private teamserver: TeamserviceService) { }
-  tableClasses: string[] = ['table'];
-  rows: pickRow[] = [];
+  constructor(private teamserver: TeamserviceService) {
+
+  }
+  tableClasses: string[] = ['table','table-bordered'];
+  rows: PickRow[] = [];
 
   columns: ISuperTableColumn[] = [
     {
       id: 'teamNum',
       key: 'teamNum',
       label: 'Team Num',
-      sort: superTableSorters.NUMBER
     },
     {
       id: 'percFocusScale',
       key: 'percFocusScale',
-      label: 'Scale Focus (%)',
-      sort: superTableSorters.NUMBER
+      label: 'Scale Focus (%)'
     }
-  ]
+  ];
 
   options: ISuperTableOptions = {
-    autoHeight: true
-  }
+    //autoHeight: true
+  };
 
   ngOnInit() {
     this.teamserver.getAllTeams().subscribe(
@@ -47,13 +47,14 @@ export class PickTableComponent implements OnInit {
           this.rows.push({
             teamNum: teams[i].teamNum,
             percFocusScale: teams[i].stats.percentFocusScale
-          })
+          });
         }
+        console.log(this.rows);
       });
-  }
+  };
 
 }
-export interface pickRow {
+export interface PickRow {
   teamNum: number;
   percFocusScale: number;
 }

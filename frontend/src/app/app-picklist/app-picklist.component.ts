@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TeamserviceService} from "../teamservice.service";
-import {Team} from "../team";
+import { PickTableComponent } from "./pick-table/pick-table.component";
 
 @Component({
   selector: 'app-app-picklist',
