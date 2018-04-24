@@ -12,5 +12,6 @@ import java.util.List;
 @Repository
 public interface MatchDataRepository extends PagingAndSortingRepository<MatchDataEntity, MatchDataID> {
 	List<MatchData> findAllByTeam(Team team);
+	MatchData findMatchDataEntitiesByTeamAndMatchNum(Team team, int matchnum);
 }
 

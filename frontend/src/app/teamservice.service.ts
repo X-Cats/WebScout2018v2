@@ -36,4 +36,14 @@ export class TeamserviceService {
     return this._http.get<Array<Team>>(environment.api + "/teams").map(response => response);
   }
 
+  public addMatchData(files: FileList) {
+    let headers = new HttpHeaders();
+    headers = headers.append('content-type','multipart/file')
+    for(let i=0; i < files.length; i++) {
+      let formData: FormData = new FormData();
+      formData.append('file',files.item(i));
+      this._http.post(environment.api + "/matchdata", formData).subscribe(response => console.log(response));
+    }
+  }
+
 }

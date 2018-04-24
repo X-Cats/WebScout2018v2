@@ -32,18 +32,18 @@ public class MatchStats implements com.xcats.XcatsScoutingLib.General.Stats.Matc
 		return this.matchData;
 	}
 	public PowerupMatchFocus getFocus(){
-		if(matchData.getCubesScale() > matchData.getCubesSwitch() ^
-				matchData.getCubesScale() > matchData.getCubesOppSwitch() ^
-				matchData.getCubesScale() > matchData.getCubesExchanged()) return PowerupMatchFocus.SCALE;
-		if(matchData.getCubesSwitch() > matchData.getCubesScale() ^
-				matchData.getCubesScale() > matchData.getCubesOppSwitch() ^
-				matchData.getCubesScale() > matchData.getCubesExchanged()) return PowerupMatchFocus.OWN_SWITCH;
-		if(matchData.getCubesOppSwitch() > matchData.getCubesSwitch() ^
-				matchData.getCubesScale() > matchData.getCubesScale() ^
-				matchData.getCubesScale() > matchData.getCubesExchanged()) return PowerupMatchFocus.OPP_SWITCH;
-		if(matchData.getCubesExchanged() > matchData.getCubesSwitch() ^
-				matchData.getCubesScale() > matchData.getCubesOppSwitch() ^
-				matchData.getCubesScale() > matchData.getCubesScale()) return PowerupMatchFocus.EXCHANGE;
+		int cubesScale = matchData.getCubesScale();
+		int cubesSwitch = matchData.getCubesSwitch();
+		int cubesOppSwitch = matchData.getCubesOppSwitch();
+		int cubesExchanged = matchData.getCubesExchanged();
+
+		int max = Math.max(Math.max(cubesScale,cubesSwitch),Math.max(cubesOppSwitch,cubesExchanged));
+
+		if(cubesScale == max) return PowerupMatchFocus.SCALE;
+		if(cubesSwitch == max) return PowerupMatchFocus.OWN_SWITCH;
+		if(cubesOppSwitch == max) return PowerupMatchFocus.OPP_SWITCH;
+		if(cubesExchanged == max) return PowerupMatchFocus.EXCHANGE;
+
 		return null;
 	}
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import {TeamserviceService} from "../teamservice.service";
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class AppNavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private teamserver: TeamserviceService) { }
 
   goTeam() {
     this.router.navigate(['teams']);
@@ -20,5 +21,10 @@ export class AppNavbarComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  handleFileUpload(files: FileList) {
+    this.teamserver.addMatchData(files);
+  }
+
 
 }

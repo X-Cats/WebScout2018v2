@@ -33,6 +33,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
 
+    compile 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
     compile project(":XcatsScoutingLib")
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('com.h2database:h2')

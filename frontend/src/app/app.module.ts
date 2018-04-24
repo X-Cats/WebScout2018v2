@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { NgbDropdownModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { CdkTableModule } from "@angular/cdk/table";
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {useHash: true}),
     NgbDropdownModule,
     AngularFontAwesomeModule,
+    CdkTableModule,
     NgbModule
   ],
   providers: [TeamserviceService],

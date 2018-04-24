@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TeamserviceService} from "../teamservice.service";
 import {Team} from "../team";
+import {CdkTable} from "@angular/cdk/table";
 
 @Component({
   selector: 'app-app-picklist',
@@ -13,6 +14,9 @@ export class AppPicklistComponent implements OnInit {
 
   teams: Array<Team>;
   num: number;
+
+  columnsToDisplay = ["teamNumber","scaleFocus"];
+
   ngOnInit() {
     this.teamserver.getAllTeams().subscribe(teams => {
       this.teams = teams.map(teams => teams);

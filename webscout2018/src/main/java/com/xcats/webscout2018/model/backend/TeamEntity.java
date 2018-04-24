@@ -8,6 +8,7 @@ import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
@@ -58,6 +59,7 @@ public class TeamEntity implements Serializable,Team {
 
 	@Override
 	public List<MatchDataEntity> getMatchData() {
+		this.matches.sort(new MatchDataEntity.SortByMatchNum());
 		return matches;
 	}
 
@@ -69,6 +71,7 @@ public class TeamEntity implements Serializable,Team {
 	@JsonInclude
 	@Override
 	public TeamStats getStats() {
+		this.matches.sort(new MatchDataEntity.SortByMatchNum());
 		return new com.xcats.webscout2018.model.backend.TeamStats(this.matches);
 	}
 }
