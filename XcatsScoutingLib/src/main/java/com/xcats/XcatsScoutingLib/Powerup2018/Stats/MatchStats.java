@@ -25,12 +25,21 @@ public class MatchStats implements com.xcats.XcatsScoutingLib.General.Stats.Matc
 
 	@Override
 	public MatchData getData() {
-		return null;
-	}
-
-	public MatchData getMatchData() {
 		return this.matchData;
 	}
+
+	public boolean getBaselineCross() {
+		return matchData.getBaselineCross();
+	}
+
+	public int getAutoCubesSwitch() {
+		return 0;
+	}
+
+	public int getAutoCubesScale() {
+		return 0;
+	}
+
 	public PowerupMatchFocus getFocus(){
 		int cubesScale = matchData.getCubesScale();
 		int cubesSwitch = matchData.getCubesSwitch();
@@ -39,6 +48,7 @@ public class MatchStats implements com.xcats.XcatsScoutingLib.General.Stats.Matc
 
 		int max = Math.max(Math.max(cubesScale,cubesSwitch),Math.max(cubesOppSwitch,cubesExchanged));
 
+		if(max == 0) return null;
 		if(cubesScale == max) return PowerupMatchFocus.SCALE;
 		if(cubesSwitch == max) return PowerupMatchFocus.OWN_SWITCH;
 		if(cubesOppSwitch == max) return PowerupMatchFocus.OPP_SWITCH;

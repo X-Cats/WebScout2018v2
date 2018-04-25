@@ -148,7 +148,7 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 		for(MatchStats M : getMatchStats()) {
 			if(M.getFocus().equals(PowerupMatchFocus.SCALE)) {
 				statCount += 1;
-				cubeCount += M.getMatchData().getCubesScale();
+				cubeCount += M.getData().getCubesScale();
 			}
 		}
 		double out = cubeCount / statCount;
@@ -163,7 +163,7 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 		for(MatchStats M : getMatchStats()) {
 			if(M.getFocus().equals(PowerupMatchFocus.OWN_SWITCH)) {
 				statCount += 1;
-				cubeCount += M.getMatchData().getCubesSwitch();
+				cubeCount += M.getData().getCubesSwitch();
 			}
 		}
 		double out = cubeCount / statCount;
@@ -178,7 +178,7 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 		for(MatchStats M : getMatchStats()) {
 			if(M.getFocus().equals(PowerupMatchFocus.OPP_SWITCH)) {
 				statCount += 1;
-				cubeCount += M.getMatchData().getCubesOppSwitch();
+				cubeCount += M.getData().getCubesOppSwitch();
 			}
 		}
 		double out = cubeCount / statCount;
@@ -193,7 +193,7 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 		for(MatchStats M : getMatchStats()) {
 			if(M.getFocus().equals(PowerupMatchFocus.EXCHANGE)) {
 				statCount += 1;
-				cubeCount += M.getMatchData().getCubesExchanged();
+				cubeCount += M.getData().getCubesExchanged();
 			}
 		}
 		double out = cubeCount / statCount;
