@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Directive, OnInit} from '@angular/core';
 import {TeamserviceService} from "../../teamservice.service";
 import {Team} from "../../team";
 import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-pick-table',
-  templateUrl: "./pick-table.component.html",
+  templateUrl: './pick-table.component.html',
   styleUrls: ['./pick-table.component.css']
 })
 export class PickTableComponent implements OnInit {
 
-  constructor(private teamserver: TeamserviceService) {
+  display = 'none';
 
-  }
+  constructor(private teamserver: TeamserviceService) {}
+
   teams: Team[] = [];
+
+  pickedTeam: Team;
 
   dtOptions: DataTables.Settings = {
     paging: false,
@@ -29,5 +32,14 @@ export class PickTableComponent implements OnInit {
         this.dtTrigger.next();
       });
   };
+
+  openPickModal(team: Team) {
+    this.pickedTeam = team;
+    this.display = 'block';
+  }
+
+  onCloseHandled() {
+    this.display = 'none';
+  }
 
 }

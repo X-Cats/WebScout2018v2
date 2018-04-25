@@ -48,7 +48,7 @@ public class MatchStats implements com.xcats.XcatsScoutingLib.General.Stats.Matc
 
 		int max = Math.max(Math.max(cubesScale,cubesSwitch),Math.max(cubesOppSwitch,cubesExchanged));
 
-		if(max == 0) return null;
+		//if(max == 0) return null; TODO Fix this so that when it's null it's NULL
 		if(cubesScale == max) return PowerupMatchFocus.SCALE;
 		if(cubesSwitch == max) return PowerupMatchFocus.OWN_SWITCH;
 		if(cubesOppSwitch == max) return PowerupMatchFocus.OPP_SWITCH;

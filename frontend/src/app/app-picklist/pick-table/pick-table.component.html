@@ -9,7 +9,7 @@
       <th>Exchange Focus (%)</th>
       <th>Exchange Avg (Focused)</th>
       <th>Exchange Total Focus</th>
-      <!--<th></th>-->
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +22,31 @@
     <td>{{ team.stats.percentFocusExchange | number:".0-0" }}</td>
     <td>{{ team.stats.focusedAverageExchange | number:".1-1" }}</td>
     <td>{{ team.stats.focusExchange }}</td>
-    <!--<td><button></button></td>-->
+    <td><button class="btn btn-outline-info" (click)="openPickModal(team)">Pick</button></td>
   </tr>
   </tbody>
 </table>
+
+<div align="center" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Info for Team {{pickedTeam.teamNum}}</h5>
+      <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong>Name</strong></td>
+            <td>{{pickedTeam.teamName}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="onCloseHandled()">Close</button>
+    </div>
+  </div>
+  </div>
+</div>

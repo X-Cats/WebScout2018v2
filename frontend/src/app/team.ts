@@ -1,5 +1,6 @@
 export interface Team {
   teamNum: number;
+  teamName: string;
   stats: Stats;
 }
 
