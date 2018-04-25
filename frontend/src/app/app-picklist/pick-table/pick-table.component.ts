@@ -1,18 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {TeamserviceService} from "../../teamservice.service";
-import {ISuperTableColumn, superTableSorters, ISuperTableOptions} from "ngx-super-table";
+import {Team} from "../../team";
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-pick-table',
-  template: `
-    <super-table
-      [rows]="rows"
-      [columns]="columns"
-      [options]="options"
-      [tableClasses]="tableClasses">
-      
-    </super-table>
-  `,
+  templateUrl: "./pick-table.component.html",
   styleUrls: ['./pick-table.component.css']
 })
 export class PickTableComponent implements OnInit {
@@ -20,41 +13,21 @@ export class PickTableComponent implements OnInit {
   constructor(private teamserver: TeamserviceService) {
 
   }
-  tableClasses: string[] = ['table','table-bordered'];
-  rows: PickRow[] = [];
+  teams: Team[] = [];
 
-  columns: ISuperTableColumn[] = [
-    {
-      id: 'teamNum',
-      key: 'teamNum',
-      label: 'Team Num',
-    },
-    {
-      id: 'percFocusScale',
-      key: 'percFocusScale',
-      label: 'Scale Focus (%)'
-    }
-  ];
-
-  options: ISuperTableOptions = {
-    //autoHeight: true
+  dtOptions: DataTables.Settings = {
+    paging: false,
+    searching: false
   };
+
+  dtTrigger: Subject<any> = new Subject<any>();
 
   ngOnInit() {
     this.teamserver.getAllTeams().subscribe(
       teams => {
-        for(let i=0; i < teams.length; i++) {
-          this.rows.push({
-            teamNum: teams[i].teamNum,
-            percFocusScale: teams[i].stats.percentFocusScale
-          });
-        }
-        console.log(this.rows);
+        this.teams = teams;
+        this.dtTrigger.next();
       });
   };
 
-}
-export interface PickRow {
-  teamNum: number;
-  percFocusScale: number;
 }

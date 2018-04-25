@@ -7,7 +7,7 @@ import { RouterModule } from "@angular/router";
 import { NgbDropdownModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
-import { SuperTableModule } from "ngx-super-table";
+import { DataTablesModule } from "angular-datatables";
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
@@ -45,7 +45,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {useHash: true}),
     NgbDropdownModule,
     AngularFontAwesomeModule,
-    SuperTableModule,
+    DataTablesModule,
     NgbModule
   ],
   providers: [TeamserviceService],

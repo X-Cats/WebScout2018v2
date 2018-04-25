@@ -1,0 +1,28 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped row-border hover">
+  <thead>
+    <tr>
+      <th>Team Number</th>
+      <th>Total Matches</th>
+      <th>Scale Focus (%)</th>
+      <th>Scale Avg (Focused)</th>
+      <th>Scale Total Focus</th>
+      <th>Exchange Focus (%)</th>
+      <th>Exchange Avg (Focused)</th>
+      <th>Exchange Total Focus</th>
+      <!--<th></th>-->
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let team of teams">
+    <td>{{ team.teamNum }}</td>
+    <td>{{ team.stats.totalMatchesPlayed }}</td>
+    <td>{{ team.stats.percentFocusScale | number:".0-0" }}</td>
+    <td>{{ team.stats.focusedAverageScale | number:".1-1" }}</td>
+    <td>{{ team.stats.focusScale }}</td>
+    <td>{{ team.stats.percentFocusExchange | number:".0-0" }}</td>
+    <td>{{ team.stats.focusedAverageExchange | number:".1-1" }}</td>
+    <td>{{ team.stats.focusExchange }}</td>
+    <!--<td><button></button></td>-->
+  </tr>
+  </tbody>
+</table>
