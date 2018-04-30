@@ -1,24 +1,31 @@
 package com.xcats.webscout2018.model.backend;
 
-import com.xcats.XcatsScoutingLib.General.Data.raw.Team;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.Team;
 import com.xcats.XcatsScoutingLib.General.Enums.Alliance;
 import com.xcats.XcatsScoutingLib.General.Enums.DriverPosition;
 import com.xcats.XcatsScoutingLib.General.Enums.RobotPosition;
-import com.xcats.XcatsScoutingLib.Powerup2018.Data.MatchData;
+import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupElementPos;
 import com.xcats.webscout2018.model.backend.id.MatchDataID;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Comparator;
 
 @Entity
+@IdClass(MatchDataID.class)
 @Table(name="match_data",schema = "event")
 public class MatchDataEntity implements Serializable, MatchData {
 
-	public MatchDataEntity(TeamEntity team, int matchNum, Alliance alliance, String scoutName, DriverPosition driverPos, RobotPosition robotPos, PowerupElementPos blueSwitchPos, PowerupElementPos redSwitchPos, PowerupElementPos scalePos, boolean baselineCross, int autoCubesSwitch, int autoCubesSwitchFail, int autoCubesScale, int autoCubesScaleFail, int cubesSwitch, int cubesSwitchFail, int cubesScale, int cubesScaleFail, int cubesOppSwitch, int cubesOppSwitchFail, int cubesExchanged, boolean climb, int climbsAssisted) {
-		this.id = new MatchDataID(team,matchNum);
+	public MatchDataEntity(TeamEntity team, int matchNum, Alliance alliance, String scoutName, DriverPosition driverPos,
+						   RobotPosition robotPos, PowerupElementPos blueSwitchPos, PowerupElementPos redSwitchPos,
+						   PowerupElementPos scalePos, boolean baselineCross, int autoCubesSwitch, int autoCubesSwitchFail,
+						   int autoCubesScale, int autoCubesScaleFail, int cubesSwitch, int cubesSwitchFail, int cubesScale,
+						   int cubesScaleFail, int cubesOppSwitch, int cubesOppSwitchFail, int cubesExchanged, boolean climb,
+						   int climbsAssisted) {
+		this.team = team;
+		this.matchNum = matchNum;
 		this.alliance = alliance;
 		this.scoutName = scoutName;
 		this.driverPos = driverPos;
@@ -41,10 +48,20 @@ public class MatchDataEntity implements Serializable, MatchData {
 		this.climb = climb;
 		this.climbsAssisted = climbsAssisted;
 	}
+	protected MatchDataEntity() {}
 
 	//General Data
 	@Id
-	MatchDataID id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	@PrimaryKeyJoinColumn(name="team_num")
+	private TeamEntity team;
+
+	@Id
+	@Column(name = "match_num")
+	private int matchNum;
+
+
 	private Alliance alliance;
 	private String scoutName;
 	private DriverPosition driverPos;
@@ -77,12 +94,12 @@ public class MatchDataEntity implements Serializable, MatchData {
 
 	@Override
 	public Team getTeam() {
-		return id.getTeam();
+		return this.team;
 	}
 
 	@Override
 	public int getMatchNum() {
-		return id.getMatchNum();
+		return this.matchNum;
 	}
 
 	@Override
@@ -190,4 +207,11 @@ public class MatchDataEntity implements Serializable, MatchData {
 		return this.climbsAssisted;
 	}
 
+	public static final class SortByMatchNum implements Comparator<MatchDataEntity> {
+		public int compare(MatchDataEntity a, MatchDataEntity b) {
+			if(a.getMatchNum() < b.getMatchNum()) return -1;
+			else if(a.getMatchNum() > b.getMatchNum()) return 1;
+			else return 0;
+		}
+	}
 }

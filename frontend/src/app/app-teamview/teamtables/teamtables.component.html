@@ -1,0 +1,77 @@
+<div *ngIf="currStats">
+  <h4>Cube Placement: </h4>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Element</th>
+      <th scope="col">Can Do?</th>
+      <th scope="col">Percent Focus</th>
+      <th scope="col">Total Focus</th>
+      <th scope="col">Average</th>
+    </tr>
+    </thead>
+    <tr>
+      <td>Switch</td>
+      <td>Yes</td>
+      <td>{{currStats.percentFocusSwitch | number:'.0-0'}}%</td>
+      <td>{{currStats.focusSwitch}}</td>
+      <td>{{currStats.focusedAverageSwitch | number:'.1-1'}}</td>
+    </tr>
+    <tr>
+      <td>Scale</td>
+      <td>Yes</td>
+      <td>{{currStats.percentFocusScale | number:'.0-0'}}%</td>
+      <td>{{currStats.focusScale}}</td>
+      <td>{{currStats.focusedAverageScale | number:'.1-1'}}</td>
+    </tr>
+    <tr>
+      <td>Opposite Switch</td>
+      <td>Yes</td>
+      <td>{{currStats.percentFocusOppSwitch | number:'.0-0'}}%</td>
+      <td>{{currStats.focusOppSwitch}}</td>
+      <td>{{currStats.focusedAverageOppSwitch | number:'.1-1'}}</td>
+    </tr>
+    <tr>
+      <td>Exchange</td>
+      <td>Yes</td>
+      <td>{{currStats.percentFocusExchange | number:'.0-0'}}%</td>
+      <td>{{currStats.focusExchange}}</td>
+      <td>{{currStats.focusedAverageExchange | number:'.1-1'}}</td>
+    </tr>
+    <tr>
+      <td>Sum</td>
+      <td></td>
+      <td>100%</td>
+      <td>{{currStats.totalMatchesPlayed}}</td>
+      <td>{{currStats.averageTotalCubes | number:'.1-1'}}</td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <h4>Autonomous</h4>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Capable</th>
+      <th scope="col">Max</th>
+    </tr>
+    </thead>
+    <tr>
+      <td>Switch</td>
+      <td>{{currStats.switchAutoCapability}}</td>
+      <td>{{currStats.maxCubesAutoSwitch}}</td>
+    </tr>
+    <tr>
+      <td>Scale</td>
+      <td>{{currStats.scaleAutoCapability}}</td>
+      <td>{{currStats.maxCubesAutoScale}}</td>
+    </tr>
+    <tr>
+      <td>Multi Cube</td>
+      <td>{{currStats.multicubeAutoCapability}}</td>
+      <td>{{currStats.maxCubesAutoCombined}}</td>
+    </tr>
+  </table>
+</div>
