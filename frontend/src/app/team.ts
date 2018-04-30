@@ -25,5 +25,15 @@ export interface Stats {
   focusedAverageOppSwitch: number;
   focusedAverageExchange: number;
 
+  maxCubesAutoSwitch: number;
+  maxCubesAutoScale: number;
+  maxCubesAutoCombined: number;
+
+  scaleAutoCapability: boolean;
+  switchAutoCapability: boolean;
+  multicubeAutoCapability: boolean;
+
+  averageTotalCubes: number;
+
   totalMatchesPlayed: number;
 }

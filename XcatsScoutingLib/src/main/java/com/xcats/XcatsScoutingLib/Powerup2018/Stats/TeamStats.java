@@ -39,16 +39,13 @@ public interface TeamStats extends com.xcats.XcatsScoutingLib.General.Stats.Team
 	double getFocusedAverageOppSwitch();
 	double getFocusedAverageExchange();
 
-	/*int getBaselineAutoMatches();
-	int getSwitchAutoMatches();
-	int getScaleAutoMatches();
+	int getMaxCubesAutoSwitch();
+	int getMaxCubesAutoScale();
+	int getMaxCubesAutoCombined();
 
-	double getBaselineAutoPercentage();
-	double getSwitchAutoPercentage();
-	double getScaleAutoPercentage();
+	boolean getScaleAutoCapability();
+	boolean getSwitchAutoCapability();
+	boolean getMulticubeAutoCapability();
 
-	double getBaselineAutoSuccess();
-	double getSwitchAutoSuccess();
-	double getScaleAutoSuccess();*/
-
+	double getAverageTotalCubes();
 }

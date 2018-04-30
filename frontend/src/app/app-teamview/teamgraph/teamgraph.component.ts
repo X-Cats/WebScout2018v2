@@ -69,7 +69,8 @@ export class TeamgraphComponent implements OnInit {
       yAxes: [{
         stacked:true
       }]
-    }
+    },
+    bezierCurve: false
   }
 
 

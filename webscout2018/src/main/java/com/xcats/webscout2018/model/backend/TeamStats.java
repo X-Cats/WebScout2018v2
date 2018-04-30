@@ -3,8 +3,10 @@ package com.xcats.webscout2018.model.backend;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xcats.XcatsScoutingLib.Powerup2018.Data.raw.MatchData;
 import com.xcats.XcatsScoutingLib.Powerup2018.Enums.PowerupMatchFocus;
+import com.xcats.XcatsScoutingLib.Powerup2018.Stats.Match;
 import com.xcats.XcatsScoutingLib.Powerup2018.Stats.MatchStats;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -76,40 +78,32 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 		return false;
 	}
 
+	private int getFocus(PowerupMatchFocus focus) {
+		int ret = 0;
+		for(MatchStats M : getMatchStats()) {
+			if(M.getFocus().equals(focus)) ret += 1;
+		}
+		return ret;
+	}
+
 	@Override
 	public int getFocusScale() {
-		try {
-			return getMatchStats().stream().filter(x -> PowerupMatchFocus.SCALE.equals(x.getFocus())).collect(Collectors.toList()).size();
-		} catch (Exception e) {
-			return 0;
-		}
+		return getFocus(PowerupMatchFocus.SCALE);
 	}
 
 	@Override
 	public int getFocusSwitch() {
-		try {
-			return getMatchStats().stream().filter(x -> PowerupMatchFocus.OWN_SWITCH.equals(x.getFocus())).collect(Collectors.toList()).size();
-		} catch (Exception e) {
-			return 0;
-		}
+		return getFocus(PowerupMatchFocus.OWN_SWITCH);
 	}
 
 	@Override
 	public int getFocusOppSwitch() {
-		try {
-			return getMatchStats().stream().filter(x -> PowerupMatchFocus.OPP_SWITCH.equals(x.getFocus())).collect(Collectors.toList()).size();
-		} catch (Exception e) {
-			return 0;
-		}
+		return getFocus(PowerupMatchFocus.OPP_SWITCH);
 	}
 
 	@Override
 	public int getFocusExchange() {
-		try {
-			return getMatchStats().stream().filter(x -> PowerupMatchFocus.EXCHANGE.equals(x.getFocus())).collect(Collectors.toList()).size();
-		} catch (Exception e) {
-			return 0;
-		}
+		return getFocus(PowerupMatchFocus.EXCHANGE);
 	}
 
 	@Override
@@ -201,6 +195,68 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 		return out;
 	}
 
+	@Override
+	public int getMaxCubesAutoSwitch() {
+		int max = 0;
+		for(MatchStats M : this.stats) {
+			if(M.getAutoCubesSwitch() > max) {
+				max = M.getAutoCubesSwitch();
+			}
+		}
+		return max;
+	}
+
+	@Override
+	public int getMaxCubesAutoScale() {
+		int max = 0;
+		for(MatchStats M : this.stats) {
+			if(M.getAutoCubesScale() > max) {
+				max = M.getAutoCubesScale();
+			}
+		}
+		return max;
+	}
+
+	@Override
+	public int getMaxCubesAutoCombined() {
+		int max = 0;
+		for(MatchStats M : this.stats) {
+			int curr = M.getAutoCubesSwitch() + M.getAutoCubesScale();
+			if(curr > max) {
+				max = curr;
+			}
+		}
+		return max;
+	}
+
+	@Override
+	public boolean getScaleAutoCapability() {
+		if(this.getMaxCubesAutoScale() > 0) return true;
+		return false;
+	}
+
+	@Override
+	public boolean getSwitchAutoCapability() {
+		if(this.getMaxCubesAutoSwitch() > 0) return true;
+		return false;
+	}
+
+	@Override
+	public boolean getMulticubeAutoCapability() {
+		if(this.getMaxCubesAutoCombined() > 1) return true;
+		return false;
+	}
+
+	@Override
+	public double getAverageTotalCubes() {
+		double sumTotalCubes = 0;
+		double ret = 0;
+		for(MatchStats M : getMatchStats()) sumTotalCubes += M.getTotalCubes();
+		ret = sumTotalCubes / (double) matchData.size();
+		if(Double.isNaN(ret)) return 0;
+		else return ret;
+	}
+
 	@JsonIgnore
 	@Override
 	public List<MatchStats> getMatchStats() {
@@ -211,4 +267,6 @@ public class TeamStats implements com.xcats.XcatsScoutingLib.Powerup2018.Stats.T
 	public int getTotalMatchesPlayed() {
 		return this.matchData.size();
 	}
+
+
 }

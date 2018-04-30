@@ -21,6 +21,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import java.net.UnknownHostException;
 
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class Webscout2018Application {
@@ -33,28 +34,31 @@ public class Webscout2018Application {
 	private final String tbaAuthKey = "U0rx6iHZYLFx1InrycvsfhYuxgRQPORyDM07f4Ekz2fHfftxJWAbIpzMD9SIl1sd";
 
 	private final String devUrl = "https://www.thebluealliance.com/api/v3/event/2018nyro/teams/simple";
-	private final String prodUrl = "https://www.thebluealliance.com/api/v3/event/2018carv/teams/simple";
+	private final String prodUrl = "https://www.thebluealliance.com/api/v3/event/2018cars/teams/simple";
 
 	private String url = prodUrl;
 
 	@Bean
-	@Profile("dev")
 	CommandLineRunner init(TeamDataRepository repo, MatchDataRepository matchRepo) {
 		return args -> {
-			OkHttpClient client = new OkHttpClient();
+			try {
+				OkHttpClient client = new OkHttpClient();
 
-			Request request = new Request.Builder()
-					.header(tbaHeader,tbaAuthKey)
-					.url(devUrl)
-					.build();
+				Request request = new Request.Builder()
+						.header(tbaHeader, tbaAuthKey)
+						.url(url)
+						.build();
 
-			Response response = client.newCall(request).execute();
-			String jsonString = response.body().string();
-			JsonElement jsonElement = new JsonParser().parse(jsonString);
-			JsonArray teamObjectArray = jsonElement.getAsJsonArray();
-			for(int i = 0; i <teamObjectArray.size(); i++ ) {
-				JsonObject object = teamObjectArray.get(i).getAsJsonObject();
-				repo.save(new TeamEntity(object.get("team_number").getAsInt(),object.get("nickname").getAsString()));
+				Response response = client.newCall(request).execute();
+				String jsonString = response.body().string();
+				JsonElement jsonElement = new JsonParser().parse(jsonString);
+				JsonArray teamObjectArray = jsonElement.getAsJsonArray();
+				for (int i = 0; i < teamObjectArray.size(); i++) {
+					JsonObject object = teamObjectArray.get(i).getAsJsonObject();
+					repo.save(new TeamEntity(object.get("team_number").getAsInt(), object.get("nickname").getAsString()));
+				}
+			} catch(UnknownHostException e) {
+
 			}
 		};
 	}

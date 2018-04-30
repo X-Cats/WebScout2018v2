@@ -38,6 +38,13 @@
       <td>{{currStats.focusExchange}}</td>
       <td>{{currStats.focusedAverageExchange | number:'.1-1'}}</td>
     </tr>
+    <tr>
+      <td>Sum</td>
+      <td></td>
+      <td>100%</td>
+      <td>{{currStats.totalMatchesPlayed}}</td>
+      <td>{{currStats.averageTotalCubes | number:'.1-1'}}</td>
+    </tr>
   </table>
 </div>
 
@@ -47,39 +54,24 @@
     <thead>
     <tr>
       <th scope="col">Type</th>
-      <th scope="col">Can Do</th>
-      <th scope="col">Percent Focus</th>
-      <th scope="col">Total Focus</th>
-      <th scope="col">Success Percentage</th>
+      <th scope="col">Capable</th>
+      <th scope="col">Max</th>
     </tr>
     </thead>
     <tr>
-      <td>Baseline</td>
-      <td>Yes</td>
-      <td>100%</td>
-      <td>10</td>
-      <td>100%</td>
-    </tr>
-    <tr>
       <td>Switch</td>
-      <td>Yes</td>
-      <td>100%</td>
-      <td>10</td>
-      <td>100%</td>
+      <td>{{currStats.switchAutoCapability}}</td>
+      <td>{{currStats.maxCubesAutoSwitch}}</td>
     </tr>
     <tr>
       <td>Scale</td>
-      <td>Yes</td>
-      <td>100%</td>
-      <td>10</td>
-      <td>100%</td>
+      <td>{{currStats.scaleAutoCapability}}</td>
+      <td>{{currStats.maxCubesAutoScale}}</td>
     </tr>
     <tr>
-      <td>Crosscourt</td>
-      <td>Yes</td>
-      <td>100%</td>
-      <td>10</td>
-      <td>100%</td>
+      <td>Multi Cube</td>
+      <td>{{currStats.multicubeAutoCapability}}</td>
+      <td>{{currStats.maxCubesAutoCombined}}</td>
     </tr>
   </table>
 </div>

@@ -7,4 +7,6 @@ public interface MatchStats<M extends MatchData> {
 	public Team getTeam();
 	public int getMatchNum();
 	public M getData();
+
+	int getTotalCubes();
 }

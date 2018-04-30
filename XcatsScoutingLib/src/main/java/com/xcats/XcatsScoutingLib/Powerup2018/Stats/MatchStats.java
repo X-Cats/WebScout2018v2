@@ -28,16 +28,26 @@ public class MatchStats implements com.xcats.XcatsScoutingLib.General.Stats.Matc
 		return this.matchData;
 	}
 
+	@Override
+	public int getTotalCubes() {
+		int out = 0;
+		out = this.matchData.getCubesExchanged() +
+				this.matchData.getCubesOppSwitch() +
+				this.matchData.getCubesSwitch() +
+				this.matchData.getCubesScale();
+		return out;
+	}
+
 	public boolean getBaselineCross() {
 		return matchData.getBaselineCross();
 	}
 
 	public int getAutoCubesSwitch() {
-		return 0;
+		return this.matchData.getAutoCubesSwitch();
 	}
 
 	public int getAutoCubesScale() {
-		return 0;
+		return this.matchData.getAutoCubesScale();
 	}
 
 	public PowerupMatchFocus getFocus(){
@@ -48,12 +58,11 @@ public class MatchStats implements com.xcats.XcatsScoutingLib.General.Stats.Matc
 
 		int max = Math.max(Math.max(cubesScale,cubesSwitch),Math.max(cubesOppSwitch,cubesExchanged));
 
-		//if(max == 0) return null; TODO Fix this so that when it's null it's NULL
-		if(cubesScale == max) return PowerupMatchFocus.SCALE;
-		if(cubesSwitch == max) return PowerupMatchFocus.OWN_SWITCH;
-		if(cubesOppSwitch == max) return PowerupMatchFocus.OPP_SWITCH;
-		if(cubesExchanged == max) return PowerupMatchFocus.EXCHANGE;
-
-		return null;
+		if(max == 0) return PowerupMatchFocus.NONE;
+		else if(cubesScale == max) return PowerupMatchFocus.SCALE;
+		else if(cubesSwitch == max) return PowerupMatchFocus.OWN_SWITCH;
+		else if(cubesOppSwitch == max) return PowerupMatchFocus.OPP_SWITCH;
+		else if(cubesExchanged == max) return PowerupMatchFocus.EXCHANGE;
+		else return PowerupMatchFocus.NONE;
 	}
 }

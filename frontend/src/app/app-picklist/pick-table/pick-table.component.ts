@@ -20,7 +20,13 @@ export class PickTableComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {
     paging: false,
-    searching: false
+    searching: false,
+    columnDefs: [{
+      searchable:false,
+      orderable: false,
+      targets: 0
+    }],
+    order:[[1,'asc']],
   };
 
   dtTrigger: Subject<any> = new Subject<any>();
